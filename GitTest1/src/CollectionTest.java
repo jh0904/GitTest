@@ -42,6 +42,10 @@ public class CollectionTest {
         for( Object o: c){
             System.out.println (o);
         }
+        /*  Iterator的三种方法：hasNext() next() remove()
+            它是在ArrayList以内部类的方式实现的！并且，从源码可知：Iterator实际上就是在遍历集合
+            所以说：我们遍历集合(Collection)的元素都可以使用Iterator，至于它的具体实现是以内部类的方式实现的！
+        */
         System.out.println ("----------第一种Iterator遍历方法--------------");
         Iterator it = c.iterator (); //第一种Iterator遍历方法
         while (it.hasNext ()){
