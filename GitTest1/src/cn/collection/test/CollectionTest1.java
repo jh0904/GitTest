@@ -1,3 +1,5 @@
+package cn.collection.test;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -29,7 +31,7 @@ public class CollectionTest1 {
         
         
         //boolean retainAll(Collection<?> c)
-        boolean b = c.retainAll (c1);//返回两个集合里面共有的。
+        boolean b = c.retainAll (c1);//返回两个集合里面共有的。 A对B做交集，最终的结果保存在A集合里面。
         System.out.println (b);
         show(c);show(c1);
     }
