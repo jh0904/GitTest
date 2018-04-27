@@ -59,6 +59,5 @@ public class ListTest {
             Object next = listIterator1.previous ();//倒序输出；但是必须先正向遍历，在逆序遍历，无意义；
             System.out.println (next);
         }
-
     }
 }
