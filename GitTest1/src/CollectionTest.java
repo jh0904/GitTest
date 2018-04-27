@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Spliterator;
 
 public class CollectionTest {
     /*
@@ -23,6 +24,8 @@ public class CollectionTest {
     * 6.交集
     *       boolean retainAll(Collection<?> c)  移除此Collection中包含在指定的Collection中所有的元素，
     *       集合A和集合B做交集，最终的结果保存在集合A，返回值表示的是A是否发生变化。
+    *  JAVA8新特性：
+    *
     * */
     public static void main(String[] args) {
 
