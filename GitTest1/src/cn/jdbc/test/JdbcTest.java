@@ -19,10 +19,8 @@ public class JdbcTest {
             conn=DriverManager.getConnection(URL,NAME,PWD);
             System.out.println("-----------------"+conn);
         } catch (ClassNotFoundException e) {
-
             e.printStackTrace();
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -35,8 +33,7 @@ public class JdbcTest {
             st=conn.createStatement();
             rs=st.executeQuery(sql);
             return rs;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -65,7 +62,6 @@ public class JdbcTest {
                 System.out.println (id+"----"+name+"-----"+age);
             }
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
