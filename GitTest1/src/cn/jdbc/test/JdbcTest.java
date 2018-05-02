@@ -1,10 +1,12 @@
 package cn.jdbc.test;
 
 import java.sql.*;
+import java.util.*;
+import java.util.Date;
 
 public class JdbcTest {
         private static final String DRIVER="com.mysql.jdbc.Driver";
-        private static final String URL="jdbc:mysql://localhost:3306/magic";
+        private static final String URL="jdbc:mysql://localhost:3306/jh";
         private static final String NAME="root";
         private static final String PWD="root";
         //创建连接数据库所需的接口
@@ -20,10 +22,9 @@ public class JdbcTest {
             System.out.println("-----------------"+conn);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return conn;
     }
     //公共的查询的方法
@@ -53,16 +54,31 @@ public class JdbcTest {
 
     public static void main(String[] args) {
         JdbcTest t=new JdbcTest();
-        ResultSet rs = t.query ("select * from user");
+        ResultSet rs = t.query ("select * from orders");
+        List<Date> list=new ArrayList<Date> ();
         try {
             while (rs.next()){
-                int id = rs.getInt ("id");
-                String name = rs.getString ("name");
-                String age=rs.getString("age");
-                System.out.println (id+"----"+name+"-----"+age);
+                int order_num= rs.getInt ("order_num");
+                Date order_date = rs.getDate ("order_date");
+                int cust_id=rs.getInt ("cust_id");
+                list.add (order_date);
+                System.out.println (order_num+"----"+order_date+"-----"+cust_id);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        for (Date d: list) {
+            System.out.println (d);
+        }
+        System.out.println ("-------------");
+        long time = list.get (list.size ()-1).getTime ();
+        long time1 = list.get (0).getTime ();
+        System.out.println ("time----"+time);
+        System.out.println ("time1----"+time1);
+        long tt=time-time1;
+        System.out.println (tt);
+        long l = tt/1000/60/60/24;
+        System.out.println (l);
+
     }
 }
