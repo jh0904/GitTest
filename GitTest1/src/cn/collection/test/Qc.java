@@ -100,11 +100,11 @@ public class Qc {
     }
 
     public static void main(String[] args) {
-        String filePath = "d:/qrcode.png";
+        String filePath = "d:/jl.png";
         File qrFile = new File(filePath);
 
         // 二维码内容
-        String encodeddata = "http://39.105.25.52:8080/jh/";
+        String encodeddata = "http://192.168.31.219:8080/jh/";
         try {
             Qc.qrCodeEncode(encodeddata, qrFile);
         } catch (IOException e) {
