@@ -18,7 +18,7 @@ import java.nio.file.StandardOpenOption;
  * @date 2018/6/22 16:34
  * description:
  */
-public class ChannelDemo {
+public class ChannelTest {
 
    @Test
    public void test3() throws IOException {
@@ -63,9 +63,9 @@ public class ChannelDemo {
         FileChannel inChannel = FileChannel.open(Paths.get("d:/aa.mkv"), StandardOpenOption.READ);
         FileChannel outChannel = FileChannel.open(Paths.get("d:/2.mkv"), StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
         /*
-        * StandardOpenOption.CREATE----------->不存在就创建，存在就覆盖
-        * StandardOpenOption.CREATE_NEW----------->不存在就创建，存在就报错
-        */
+         * StandardOpenOption.CREATE----------->不存在就创建，存在就覆盖
+         * StandardOpenOption.CREATE_NEW----------->不存在就创建，存在就报错
+         */
 
         //内存映射文件
         MappedByteBuffer inMappedBuf = inChannel.map(FileChannel.MapMode.READ_ONLY, 0, inChannel.size());
