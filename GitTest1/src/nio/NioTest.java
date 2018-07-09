@@ -1,4 +1,4 @@
-package com.nio.test;
+package nio;
 
 import org.junit.Test;
 
