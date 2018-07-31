@@ -8,6 +8,7 @@ package java8;
  * description:创建一个简单的实体类
  */
 public class Employee {
+	private int id;
 	private String name;
 	private int age;
 	private double salary;
@@ -16,10 +17,28 @@ public class Employee {
 		super ();
 	}
 
+	public Employee(String name) {
+		this.name = name;
+	}
+
+
 	public Employee(String name, int age, double salary) {
 		this.name = name;
 		this.age = age;
 		this.salary = salary;
+	}
+
+	public Employee(int id, int age) {
+		this.id = id;
+		this.age = age;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -49,7 +68,8 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee{" +
-				"name='" + name + '\'' +
+				"id=" + id +
+				", name='" + name + '\'' +
 				", age=" + age +
 				", salary=" + salary +
 				'}';
