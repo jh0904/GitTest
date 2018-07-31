@@ -7,6 +7,7 @@ package java8;
  * @date 2018/7/31 8:49
  * description:
  */
+@FunctionalInterface
 public interface MyPredicate<T> {
 
 	public boolean test(T t);
