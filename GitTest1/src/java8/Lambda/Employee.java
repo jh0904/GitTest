@@ -1,5 +1,7 @@
 package java8.Lambda;
 
+import java.util.Objects;
+
 /**
  * java8
  *
@@ -8,10 +10,11 @@ package java8.Lambda;
  * description:创建一个简单的实体类
  */
 public class Employee {
-	private int id;
+	private Integer id;
 	private String name;
 	private int age;
 	private double salary;
+	private Status status;
 
 	public Employee() {
 		super ();
@@ -33,6 +36,25 @@ public class Employee {
 		this.age = age;
 	}
 
+	public Employee( String name, int age, double salary, Status status) {
+		this.name = name;
+		this.age = age;
+		this.salary = salary;
+		this.status = status;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -49,7 +71,7 @@ public class Employee {
 		this.name = name;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
@@ -72,6 +94,28 @@ public class Employee {
 				", name='" + name + '\'' +
 				", age=" + age +
 				", salary=" + salary +
+				", status=" + status +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass () != o.getClass ()) return false;
+		Employee employee = (Employee) o;
+		return id == employee.id &&
+				age == employee.age &&
+				Double.compare (employee.salary, salary) == 0 &&
+				Objects.equals (name, employee.name);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash (id, name, age, salary);
+	}
+	public enum Status{
+		FREE,
+		BUSY,
+		VOCATION
 	}
 }
