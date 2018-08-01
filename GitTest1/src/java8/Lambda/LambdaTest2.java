@@ -1,7 +1,6 @@
-package java8;
+package java8.Lambda;
 
 import org.junit.Test;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.*;
 import java.util.function.Consumer;

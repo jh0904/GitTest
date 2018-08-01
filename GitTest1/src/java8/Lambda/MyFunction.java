@@ -1,4 +1,4 @@
-package java8;
+package java8.Lambda;
 
 /**
  * java8
@@ -8,7 +8,6 @@ package java8;
  * description:
  */
 @FunctionalInterface
-public interface MyFunction2<T,R> {
-
-	public R getValue(T t1,T t2);
+public interface MyFunction {
+	public String getValue(String str);
 }
