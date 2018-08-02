@@ -113,7 +113,7 @@ public class TestTransaction {
 				.max (Comparator.comparing (Transaction::getValue));
 		System.out.println (max.get ());*/
 		Optional<Integer> max = transactions.stream ()
-				.map ((t) -> t.getValue ())
+				.map (Transaction::getValue)
 				.max (Integer::compare);
 		System.out.println (max.get ());
 	}
