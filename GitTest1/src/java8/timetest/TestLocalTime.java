@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import javax.swing.plaf.basic.BasicTextAreaUI;
 import java.time.*;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 
 /**
  * java8.timetest
@@ -14,12 +16,51 @@ import java.time.*;
  */
 public class TestLocalTime {
 	/*
+	* DateTimeFormatter:格式化时间
+	* */
+
+	@Test
+	public void test6(){
+
+	}
+	/*
+	 * 时间校正器
+	 * */
+	@Test
+	public void test5() {
+		LocalDateTime ldt = LocalDateTime.now ();
+		System.out.println (ldt);
+
+		LocalDateTime ldt2 = ldt.withDayOfMonth (10);
+		System.out.println (ldt2);
+
+		LocalDateTime ldt3 = ldt.with (TemporalAdjusters.next (DayOfWeek.SUNDAY));
+		System.out.println (ldt3);
+		//自定义：下一个工作日。
+		LocalDateTime ldt5 = ldt.with ((l) -> {
+			LocalDateTime ldt4 = (LocalDateTime) l;
+
+			DayOfWeek day = ldt4.getDayOfWeek ();
+
+			if (day.equals (DayOfWeek.FRIDAY)) {
+				return ldt4.plusDays (3);
+			} else if (day.equals (DayOfWeek.SATURDAY)) {
+				return ldt4.plusDays (2);
+			} else {
+				return ldt4.plusDays (1);
+			}
+		});
+
+		System.out.println (ldt5);
+	}
+
+	/*
 	 * Duration:计算两个时间之间的间隔
 	 * Period:计算两个日期之间的间隔
 	 * */
 	@Test
-	public void test4(){
-		LocalDate ld1 = LocalDate.of (2017,8,3);
+	public void test4() {
+		LocalDate ld1 = LocalDate.of (2017, 8, 3);
 		LocalDate ld2 = LocalDate.now ();
 
 		Period between = Period.between (ld1, ld2);
@@ -27,7 +68,6 @@ public class TestLocalTime {
 		System.out.println (between.getMonths ());
 		System.out.println (between.getDays ());
 	}
-
 
 	@Test
 	public void test3() throws InterruptedException {
@@ -46,9 +86,8 @@ public class TestLocalTime {
 		Duration between1 = Duration.between (localTime, localTime1);
 		System.out.println (between.toMillis ());
 
-
-
 	}
+
 	//2.Instant:时间戳 (Unix元年：1970年1月1日00：00：00之间的毫秒值)
 	@Test
 	public void test2() {
