@@ -2,10 +2,10 @@ package java8.timetest;
 
 import org.junit.Test;
 
-import javax.swing.plaf.basic.BasicTextAreaUI;
 import java.time.*;
-import java.time.temporal.TemporalAdjuster;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Set;
 
 /**
  * java8.timetest
@@ -15,13 +15,46 @@ import java.time.temporal.TemporalAdjusters;
  * description:
  */
 public class TestLocalTime {
+
+	//带时区的时间API
+
+	@Test
+	public void test8(){
+		LocalDateTime ldt = LocalDateTime.now (ZoneId.of ("Asia/Tokyo"));
+		System.out.println (ldt);
+
+		LocalDateTime ldt2 = LocalDateTime.now (ZoneId.of ("Asia/Tokyo"));
+		ZonedDateTime zdt = ldt2.atZone (ZoneId.of ("Asia/Tokyo"));
+		System.out.println (zdt);
+	}
+	@Test
+	public void test7(){
+		Set<String> set = ZoneId.getAvailableZoneIds ();
+		for (String s : set) {
+			System.out.println (s);
+		}
+	}
 	/*
 	* DateTimeFormatter:格式化时间
 	* */
 
 	@Test
 	public void test6(){
+		DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE;
+		LocalDateTime ldt = LocalDateTime.now ();
 
+		String format = ldt.format (dtf);
+		System.out.println (format);
+
+		System.out.println ("--------------");
+
+		DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern ("yyyy年MM月dd日 HH:mm:ss");
+
+		String format1 = dtf2.format (ldt);
+		System.out.println (format1);
+
+		LocalDateTime parse = ldt.parse (format1,dtf2);
+		System.out.println (parse);
 	}
 	/*
 	 * 时间校正器
