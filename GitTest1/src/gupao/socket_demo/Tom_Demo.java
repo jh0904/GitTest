@@ -6,8 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * gupao.socket_demo
- *
  * @author jh
  * @date 2018/8/9 21:18
  * description:
